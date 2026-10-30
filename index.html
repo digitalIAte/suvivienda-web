@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuVivienda | Tres propuestas de portada</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html { background: #fbfbfa; color: #151517; font: 400 17px/1.5 Figtree, system-ui, sans-serif; }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 32px 72px; }
+  img.logo { display: block; width: 315px; max-width: 70vw; height: auto; }
+  h1 { font-size: clamp(32px, 4.4vw, 56px); line-height: 1.08; letter-spacing: -.02em; margin: 24px 0 44px; }
+  article { display: grid; grid-template-columns: 3fr 2fr; gap: 36px; align-items: center; padding-block: 28px; border-top: 1px solid #d9d9dc; }
+  article > a img { display: block; width: 100%; border: 1px solid #d9d9dc; transition: opacity .2s; }
+  article > a:hover img { opacity: .85; }
+  h2 { font-size: 34px; letter-spacing: -.02em; }
+  p { color: #5d5d63; margin: 8px 0 18px; }
+  .ir { color: #b81f30; font-weight: 600; }
+  @media (max-width: 760px) { main { padding: 16px; } article { grid-template-columns: 1fr; gap: 16px; } }
+</style>
+</head>
+<body><main>
+  <img class="logo" src="recursos/logo.png" width="315" height="113" alt="SuVivienda">
+  <h1>Tres ideas para la portada.</h1>
+  <article><a href="recorrido/"><img src="recursos/capturas/recorrido.jpg" alt="Propuesta Recorrido"></a><div><h2>Recorrido</h2><p>Al bajar por la página, entras andando en dos viviendas reales. Para quien quiere hacerse una idea desde el sofá.</p><a class="ir" href="recorrido/">Ver Recorrido</a></div></article>
+  <article><a href="escaparate/"><img src="recursos/capturas/escaparate.jpg" alt="Propuesta Escaparate"></a><div><h2>Escaparate</h2><p>Toda la cartera a la vista, con filtros que funcionan y el precio en grande. Para quien ya está buscando.</p><a class="ir" href="escaparate/">Ver Escaparate</a></div></article>
+  <article><a href="hoya/"><img src="recursos/capturas/hoya.jpg" alt="Propuesta Hoya"></a><div><h2>Hoya</h2><p>La página se ordena por pueblos y separa desde el inicio a quien busca de quien vende. Para reforzar la captación de propietarios.</p><a class="ir" href="hoya/">Ver Hoya</a></div></article>
+</main></body>
+</html>

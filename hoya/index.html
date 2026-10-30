@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SuVivienda | Inmobiliaria en Huesca y la Hoya</title>
+<meta name="description" content="Compra, vende o alquila en Huesca capital y provincia con SuVivienda, en Calle Fatás 6.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --fondo: #eef1ec; --tinta: #16302b; --suave: #4d625c; --linea: #16302b33; --rojo: #b81f30; --hoja: #dfe5dd; }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--fondo); color: var(--tinta); font: 400 17px/1.55 Figtree, system-ui, sans-serif; }
+  a { color: inherit; }
+  button, input, select, textarea { font: inherit; color: inherit; }
+  .serif { font-family: Newsreader, Georgia, serif; font-weight: 400; }
+  .marco { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 14px; }
+  header img { display: block; width: 315px; max-width: 62vw; height: auto; mix-blend-mode: multiply; }
+  header a.tel { font-weight: 600; text-decoration: none; white-space: nowrap; }
+  .hero h1 { font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(40px, 5.4vw, 78px); line-height: 1.04; letter-spacing: -.025em; padding-block: 8px 22px; }
+  .hero h1 em { color: var(--rojo); }
+  .panorama { height: min(31svh, 340px); overflow: hidden; }
+  .panorama img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      .panorama img { animation: paneo linear both; animation-timeline: scroll(root); animation-range: 0 90svh; }
+      @keyframes paneo { from { object-position: 30% 50%; } to { object-position: 90% 50%; } }
+    }
+    .revela { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+    .revela.visible { opacity: 1; transform: none; }
+  }
+  .puertas { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--tinta); }
+  .puerta { padding: 18px 32px 22px; text-decoration: none; display: block; transition: background .25s, color .25s; }
+  .puerta + .puerta { border-left: 1px solid var(--tinta); }
+  .puerta:hover { background: var(--tinta); color: var(--fondo); }
+  .puerta b { display: block; font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(32px, 3.8vw, 54px); line-height: 1.08; }
+  .puerta span { display: block; margin-top: 6px; }
+  .pueblos { display: grid; grid-template-columns: 5fr 6fr; gap: 56px; padding-block: 88px; align-items: start; }
+  .pueblos h2, .valorar h2 { font-family: Newsreader, Georgia, serif; font-weight: 400; font-size: clamp(36px, 4.6vw, 66px); line-height: 1.06; letter-spacing: -.02em; }
+  .lista { list-style: none; padding: 0; margin-top: 30px; }
+  .lista button { width: 100%; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; background: none; border: 0; border-bottom: 1px solid var(--linea); padding: 12px 0; cursor: pointer; text-align: left; font-family: Newsreader, Georgia, serif; font-size: clamp(26px, 2.8vw, 38px); line-height: 1.15; transition: padding .25s cubic-bezier(.16,1,.3,1), color .2s; }
+  .lista button small { font: 500 15px Figtree, sans-serif; color: var(--suave); white-space: nowrap; }
+  .lista button:hover, .lista button[aria-pressed="true"] { color: var(--rojo); padding-left: 10px; }
+  .casas { position: sticky; top: 24px; display: grid; gap: 22px; }
+  .casa { text-decoration: none; display: grid; grid-template-columns: 1fr; }
+  .casa img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+  .casa.plana { grid-template-columns: auto 1fr; gap: 18px; align-items: baseline; border-top: 1px solid var(--linea); padding-top: 12px; }
+  .casa b { font-weight: 600; white-space: nowrap; }
+  .casa:not(.plana) b { display: block; margin-top: 10px; font-size: 20px; }
+  .casa span { color: var(--suave); }
+  .casa:hover span { color: var(--tinta); text-decoration: underline; }
+  .banda { max-width: 1170px; margin: 0 auto; padding: 0 32px; }
+  .banda img { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; object-position: 50% 65%; }
+  .valorar { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; padding-block: 88px; }
+  .valorar p { color: var(--suave); margin-top: 18px; max-width: 42ch; }
+  form { display: grid; gap: 18px; }
+  .fila { display: grid; gap: 6px; }
+  label { font-weight: 500; font-size: 15px; }
+  input, select { width: 100%; padding: 13px 14px; background: #f8f9f7; border: 1px solid var(--tinta); border-radius: 2px; }
+  input:focus, select:focus { outline: 2px solid var(--rojo); outline-offset: 1px; }
+  .boton { justify-self: start; background: var(--rojo); color: #fff; border: 0; border-radius: 2px; padding: 15px 26px; font-weight: 600; cursor: pointer; transition: background .2s, transform .1s; }
+  .boton:hover { background: #971725; }
+  .boton:active { transform: translateY(1px); }
+  .nota { font-size: 14px; color: var(--suave); }
+  footer { background: var(--hoja); }
+  footer .marco { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding-block: 30px; }
+  @media (max-width: 860px) {
+    .marco { padding: 0 16px; }
+    .puertas, .pueblos, .valorar { grid-template-columns: 1fr; }
+    .puerta { padding: 24px 16px 28px; }
+    .puerta + .puerta { border-left: 0; border-top: 1px solid var(--tinta); }
+    .pueblos, .valorar { padding-block: 60px; gap: 36px; }
+    .casas { position: static; }
+    .banda { padding: 0 16px; }
+    .banda img { aspect-ratio: 4 / 3; }
+    header img { max-width: 56vw; }
+    .panorama { height: 38svh; }
+  }
+</style>
+</head>
+<body>
+<header class="marco">
+  <a href="#"><img src="../recursos/logo.png" width="315" height="113" alt="SuVivienda"></a>
+  <a class="tel" href="tel:+34974353641">974 353 641</a>
+</header>
+<section class="hero">
+  <h1 class="marco">De Huesca a la Hoya, <em>casa por casa.</em></h1>
+  <div class="panorama"><img src="../recursos/fotos/loarre.jpg" alt="Tejados de Loarre con la sierra al fondo"></div>
+  <div class="puertas">
+    <a class="puerta" href="#pueblos"><b>Busco casa</b><span>Mira qué tenemos en cada sitio.</span></a>
+    <a class="puerta" href="#valorar"><b>Tengo una casa</b><span>Te ayudamos a venderla o alquilarla.</span></a>
+  </div>
+</section>
+<section class="marco pueblos" id="pueblos">
+  <div class="revela">
+    <h2>¿Por dónde quieres vivir?</h2>
+    <ul class="lista"></ul>
+  </div>
+  <div class="casas" aria-live="polite"></div>
+</section>
+<div class="banda revela"><img src="../recursos/fotos/huesca.jpg" alt="Huesca desde el balcón de una vivienda" loading="lazy"></div>
+<section class="marco valorar" id="valorar">
+  <div class="revela">
+    <h2>Dinos qué casa tienes y te llamamos.</h2>
+    <p>Valoración del inmueble, certificados y servicio después de la venta, desde nuestra oficina en la Calle Fatás.</p>
+  </div>
+  <form class="revela" action="mailto:info@suviviendahuesca.com" method="post" enctype="text/plain">
+    <div class="fila"><label for="n">Nombre</label><input id="n" name="nombre" required autocomplete="name"></div>
+    <div class="fila"><label for="t">Teléfono</label><input id="t" name="telefono" type="tel" required autocomplete="tel"></div>
+    <div class="fila"><label for="d">Dirección o pueblo de la vivienda</label><input id="d" name="vivienda" required></div>
+    <div class="fila"><label for="o">Qué quieres hacer</label><select id="o" name="operacion"><option>Vender</option><option>Alquilar</option></select></div>
+    <button class="boton">Quiero que me llamen</button>
+  </form>
+</section>
+<footer><div class="marco"><span>Calle Fatás 6, 22002 Huesca</span><a href="tel:+34974353641">974 353 641</a><a href="mailto:info@suviviendahuesca.com">info@suviviendahuesca.com</a></div></footer>
+<script>
+  const INMUEBLES = [{"ref":"SV-0012","t":"Piso de 4 habitaciones junto al Hospital San Jorge","p":360000,"alq":false,"m":177,"h":4,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0012","foto":true},{"ref":"SV-0013","t":"Casa independiente con jardín en Siétamo","p":355000,"alq":false,"m":226,"h":3,"loc":"Siétamo","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-sietamo-sv-0013","foto":false},{"ref":"SV-0014","t":"Casa unifamiliar en Loarre, lista para entrar a vivir","p":110000,"alq":false,"m":140,"h":3,"loc":"Loarre","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-loarre-sv-0014","foto":true},{"ref":"SV-0015","t":"Dúplex de obra nueva con terraza en Los Olivos","p":372500,"alq":false,"m":139,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"https://suvivienda.digitaliate.es/inmueble/duplex-en-venta-huesca-sv-0015","foto":true},{"ref":"SV-0016","t":"Dúplex de obra nueva con terraza en Los Olivos","p":375500,"alq":false,"m":138,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"https://suvivienda.digitaliate.es/inmueble/duplex-en-venta-huesca-sv-0016","foto":true},{"ref":"SV-0017","t":"Chalet independiente con piscina en Vicién","p":649000,"alq":false,"m":243,"h":3,"loc":"Vicién","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-vicien-sv-0017","foto":false},{"ref":"SV-0018","t":"Piso reformado con tres terrazas en Los Olivos","p":350000,"alq":false,"m":120,"h":2,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0018","foto":false},{"ref":"SV-0019","t":"Piso para reformar en el centro, calle Cabestany","p":189000,"alq":false,"m":65,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0019","foto":true},{"ref":"SV-0020","t":"Piso con garaje en el centro, zona Sto. Domingo","p":180000,"alq":false,"m":64,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0020","foto":true},{"ref":"SV-0021","t":"Piso reformado de 3 habitaciones en el centro","p":1150,"alq":true,"m":110,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-alquiler-huesca-sv-0021","foto":false},{"ref":"SV-0022","t":"Piso de 4 habitaciones a estrenar en el centro","p":1200,"alq":true,"m":140,"h":4,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-alquiler-huesca-sv-0022","foto":false},{"ref":"SV-0023","t":"Local reformado a pie de calle en el Casco Antiguo","p":95000,"alq":false,"m":53,"h":null,"loc":"Huesca","tipo":"Local","url":"https://suvivienda.digitaliate.es/inmueble/local-en-venta-huesca-sv-0023","foto":false},{"ref":"SV-0024","t":"Local diáfano a pie de calle en Calle Fatás","p":1900,"alq":true,"m":125,"h":null,"loc":"Huesca","tipo":"Local","url":"https://suvivienda.digitaliate.es/inmueble/local-en-alquiler-huesca-sv-0024","foto":false},{"ref":"SV-0025","t":"Plaza de garaje en venta en Los Olivos","p":9000,"alq":false,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"https://suvivienda.digitaliate.es/inmueble/garaje-en-venta-huesca-sv-0025","foto":false},{"ref":"SV-0026","t":"Plaza de garaje en alquiler en Los Olivos","p":65,"alq":true,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"https://suvivienda.digitaliate.es/inmueble/garaje-en-alquiler-huesca-sv-0026","foto":false},{"ref":"SV-0027","t":"Solar urbano de 514 m² en Ayerbe con proyecto","p":59000,"alq":false,"m":514,"h":null,"loc":"Ayerbe","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-ayerbe-sv-0027","foto":true},{"ref":"SV-0028","t":"Finca de 1.830 m² con vivienda y huerto","p":65000,"alq":false,"m":1830,"h":null,"loc":"Alcalá de Gurrea","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-alcala-de-gurrea-sv-0028","foto":false},{"ref":"SV-0029","t":"Terreno de regadío con nave a 2 km de Huesca","p":70000,"alq":false,"m":560,"h":null,"loc":"Huesca","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-huesca-sv-0029","foto":false},{"ref":"SV-0030","t":"Edificio hotelero de 33 habitaciones en Huesca","p":1600000,"alq":false,"m":2000,"h":null,"loc":"Huesca","tipo":"Edificio","url":"https://suvivienda.digitaliate.es/inmueble/edificio-en-venta-huesca-sv-0030","foto":false}];
+  const euros = (n) => new Intl.NumberFormat("de-DE").format(n) + " €";
+  const pueblos = {};
+  INMUEBLES.forEach((i) => (pueblos[i.loc] ??= []).push(i));
+  const orden = Object.keys(pueblos).sort((a, b) => pueblos[b].length - pueblos[a].length);
+  const lista = document.querySelector(".lista"), casas = document.querySelector(".casas");
+  const mostrar = (nombre) => {
+    lista.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.p === nombre));
+    const grupo = [...pueblos[nombre]].sort((a, b) => b.foto - a.foto);
+    const conFoto = grupo.findIndex((i) => i.foto);
+    casas.replaceChildren(...grupo.slice(0, 6).map((i, n) => {
+      const a = document.createElement("a");
+      const destacada = n === 0 && conFoto === 0;
+      a.href = i.url; a.className = `casa${destacada ? "" : " plana"}`;
+      a.innerHTML = `${destacada ? `<img src="../recursos/fotos/${i.ref}.jpg" alt="${i.t}">` : ""}<b>${euros(i.p)}${i.alq ? " /mes" : ""}</b><span>${i.t}</span>`;
+      return a;
+    }));
+  };
+  orden.forEach((p) => {
+    const li = document.createElement("li"), b = document.createElement("button");
+    const n = pueblos[p].length;
+    b.type = "button"; b.dataset.p = p;
+    b.innerHTML = `${p}<small>${n} ${n === 1 ? "inmueble" : "inmuebles"}</small>`;
+    b.addEventListener("click", () => mostrar(p));
+    b.addEventListener("mouseenter", () => mostrar(p));
+    li.append(b); lista.append(li);
+  });
+  mostrar(orden[0]);
+  const obs = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); } }), { threshold: .15 });
+  document.querySelectorAll(".revela").forEach((el) => obs.observe(el));
+</script>
+</body>
+</html>
