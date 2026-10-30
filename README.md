@@ -17,6 +17,7 @@ Referencias estudiadas: Lucas Fox, Engel & Völkers y The Agency (buscador arrib
 
 ## Pendiente de confirmar con el cliente
 - Logo en vector o alta resolución: el actual mide 315x113 px.
-- Si la valoración es gratuita: no se promete en ninguna propuesta.
+- Textos de valoración gratuita, 24 horas y pasos: tomados de la landing de captación publicada.
 - Fotos de los inmuebles sin imagen (fichas solo de texto) y original del vídeo de LFT.
-- Equivalencia entre las referencias SV-0015/16 y las imágenes de LFT.
+- El anuncio de SV-0015/16 dice «Los Olivos» y el dossier de LFT, calle León Abadías: confirmar que es el mismo proyecto.
+- Vídeo de LFT: reescalado desde la copia de WhatsApp, falta el original.
