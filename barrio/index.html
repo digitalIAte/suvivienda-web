@@ -193,6 +193,15 @@
   });
   const obsRevela = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); obsRevela.unobserve(e.target); } }), { threshold: .12 });
   document.querySelectorAll(".revela").forEach((el) => obsRevela.observe(el));
+  // La ficha de la casa con recorrido completo lleva a él; se aplica al final porque cada propuesta pinta sus tarjetas después.
+  document.addEventListener("DOMContentLoaded", () => document.querySelectorAll('a[href$="sv-0012"]').forEach((a) => {
+    a.href = "../recorrido-ferrer/";
+    if (a.classList.contains("ver")) { a.textContent = "Recorrer la casa"; return; }
+    const m = document.createElement("span");
+    m.textContent = "Recorrer la casa";
+    m.style.cssText = "display:block;margin-top:8px;font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px";
+    (a.classList.contains("pieza") ? a : a.querySelector(":scope > div") ?? a).append(m);
+  }));
 
   document.querySelector(".fichas").append(...destacados.slice(0, 6).map((i) => {
     const a = document.createElement("a");

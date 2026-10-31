@@ -13,6 +13,7 @@ Enlace: https://digitaliate.github.io/suvivienda-web/
 - 19 inmuebles reales; fichas y buscador enlazan a suvivienda.digitaliate.es.
 - Empresa: textos de su web y de la plataforma. Fotos de oficina y equipo de 2016-2017, reescaladas.
 - Vídeos rotulados: IA a partir de fotos reales y animación del proyecto en LFT.
+- Recorrido completo de SV-0012 en `recorrido-ferrer/`, enlazado desde su tarjeta en las cuatro propuestas.
 
 ## Pendiente de confirmar con el cliente
 - Conchita Seral y Pilar Grasa: los nombres salen de una entrevista de 2016 (subrayado de puntos). Confirmar que siguen y su permiso para usar la foto.
@@ -21,4 +22,5 @@ Enlace: https://digitaliate.github.io/suvivienda-web/
 - SV-0015/16: el anuncio dice Los Olivos y el dossier, calle León Abadías.
 - Logo en alta resolución y original del vídeo de LFT.
 - Fotos de los 12 inmuebles sin imagen.
+- Recorrido SV-0012: qué se editó en la foto del segundo baño (llevaba marca de IA) y foto recogida del cuarto dormitorio.
 - Formularios de valoración: por ahora abren el correo.
