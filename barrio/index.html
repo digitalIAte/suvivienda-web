@@ -194,7 +194,7 @@
   const obsRevela = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); obsRevela.unobserve(e.target); } }), { threshold: .12 });
   document.querySelectorAll(".revela").forEach((el) => obsRevela.observe(el));
   // Las fichas con recorrido completo llevan a él; se aplica al final porque cada propuesta pinta sus tarjetas después.
-  const RECORRIDOS = { "sv-0012": ["../recorrido-ferrer/", "Recorrer la casa"], "sv-0014": ["../recorrido-loarre/", "Recorrer la casa"], "sv-0015": ["../recorrido-lft/", "Recorrer el loft"], "sv-0016": ["../recorrido-lft/", "Recorrer el loft"] };
+  const RECORRIDOS = { "sv-0012": ["../recorrido-ferrer/", "Recorrer la casa"], "sv-0014": ["../recorrido-loarre/", "Recorrer la casa"], "sv-0020": ["../recorrido-tenerias/", "Recorrer el piso"], "sv-0015": ["../recorrido-lft/", "Recorrer el loft"], "sv-0016": ["../recorrido-lft/", "Recorrer el loft"] };
   document.addEventListener("DOMContentLoaded", () => Object.entries(RECORRIDOS).forEach(([ref, [url, texto]]) => document.querySelectorAll(`a[href$="${ref}"]`).forEach((a) => {
     a.href = url;
     if (a.classList.contains("ver") || a.classList.contains("boton")) { a.textContent = texto; return; }
