@@ -14,6 +14,7 @@ Enlace: https://digitaliate.github.io/suvivienda-web/
 - Empresa: textos de su web y de la plataforma. Fotos de oficina y equipo de 2016-2017, reescaladas.
 - Vídeos rotulados: IA a partir de fotos reales y animación del proyecto en LFT.
 - Recorrido completo de SV-0012 en `recorrido-ferrer/`, enlazado desde su tarjeta en las cuatro propuestas.
+- Recorrido de LFT en `recorrido-lft/`: orden salón, altillo, bajada, cocina y terraza, enlazado desde SV-0015 en las propuestas.
 
 ## Pendiente de confirmar con el cliente
 - Conchita Seral y Pilar Grasa: los nombres salen de una entrevista de 2016 (subrayado de puntos). Confirmar que siguen y su permiso para usar la foto.

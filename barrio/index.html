@@ -126,7 +126,7 @@
     <a class="camino revela" href="https://suvivienda.digitaliate.es/comprar"><img loading="lazy" src="../recursos/fotos/SV-0012.jpg" alt=""><div><h3>Comprar</h3><p>Te enseñamos lo que encaja con lo que buscas.</p></div></a>
     <a class="camino revela" href="https://suvivienda.digitaliate.es/alquilar"><img loading="lazy" src="../recursos/fotos/SV-0020.jpg" alt=""><div><h3>Alquilar</h3><p>Contratos en regla y fianza depositada en la DGA.</p></div></a>
     <a class="camino revela" href="#vender"><img loading="lazy" src="../recursos/fotos/mesa.jpg" alt=""><div><h3>Vender</h3><p>Nos ocupamos de todo hasta la entrega de llaves.</p></div></a>
-    <a class="camino revela" href="https://suvivienda.digitaliate.es/comprar?tipo=duplex"><img loading="lazy" src="../recursos/fotos/SV-0016.jpg" alt=""><div><h3>Obra nueva</h3><p>Cinco lofts en el centro de Huesca.</p></div></a>
+    <a class="camino revela" href="../recorrido-lft/"><img loading="lazy" src="../recursos/fotos/SV-0016.jpg" alt=""><div><h3>Obra nueva</h3><p>Cinco lofts en el centro de Huesca.</p></div></a>
   </div>
 </section>
 <section class="pasos" id="vender"><div class="marco">
@@ -193,15 +193,16 @@
   });
   const obsRevela = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("visible"); obsRevela.unobserve(e.target); } }), { threshold: .12 });
   document.querySelectorAll(".revela").forEach((el) => obsRevela.observe(el));
-  // La ficha de la casa con recorrido completo lleva a él; se aplica al final porque cada propuesta pinta sus tarjetas después.
-  document.addEventListener("DOMContentLoaded", () => document.querySelectorAll('a[href$="sv-0012"]').forEach((a) => {
-    a.href = "../recorrido-ferrer/";
-    if (a.classList.contains("ver")) { a.textContent = "Recorrer la casa"; return; }
+  // Las fichas con recorrido completo llevan a él; se aplica al final porque cada propuesta pinta sus tarjetas después.
+  const RECORRIDOS = { "sv-0012": ["../recorrido-ferrer/", "Recorrer la casa"], "sv-0015": ["../recorrido-lft/", "Recorrer el loft"], "sv-0016": ["../recorrido-lft/", "Recorrer el loft"] };
+  document.addEventListener("DOMContentLoaded", () => Object.entries(RECORRIDOS).forEach(([ref, [url, texto]]) => document.querySelectorAll(`a[href$="${ref}"]`).forEach((a) => {
+    a.href = url;
+    if (a.classList.contains("ver") || a.classList.contains("boton")) { a.textContent = texto; return; }
     const m = document.createElement("span");
-    m.textContent = "Recorrer la casa";
+    m.textContent = texto;
     m.style.cssText = "display:block;margin-top:8px;font-weight:600;font-size:15px;text-decoration:underline;text-underline-offset:3px";
     (a.classList.contains("pieza") ? a : a.querySelector(":scope > div") ?? a).append(m);
-  }));
+  })));
 
   document.querySelector(".fichas").append(...destacados.slice(0, 6).map((i) => {
     const a = document.createElement("a");

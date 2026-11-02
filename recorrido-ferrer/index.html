@@ -13,7 +13,7 @@
   html { background: var(--fondo); color: var(--tinta); font: 400 16px/1.5 Geist, system-ui, sans-serif; }
   .escenario { position: fixed; inset: 0; overflow: hidden; background: var(--fondo); }
   video { position: absolute; display: block; }
-  .escenario::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(#16130f99, transparent 22%, transparent 62%, #16130fcc); }
+  .escenario::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(#16130fcc, transparent 28%, transparent 62%, #16130fcc); }
   svg.flechas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
   svg line { stroke: var(--tinta); stroke-width: 1.2; }
   svg circle.punto { fill: var(--tinta); }
@@ -22,8 +22,8 @@
   .nota { position: absolute; z-index: 3; width: 230px; padding: 12px 14px; background: #16130fd9; backdrop-filter: blur(8px); border-left: 1px solid var(--tinta); font-size: 14px; line-height: 1.35; opacity: 0; transition: opacity .35s ease; }
   .nota small { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); margin-bottom: 4px; }
   .nota.visible { opacity: 1; }
-  .marca { position: fixed; top: 0; left: 16px; z-index: 6; display: block; background: #fbfbfa; padding: 6px 10px; }
-  .marca img { display: block; width: 315px; max-width: 46vw; height: auto; }
+  .marca { position: fixed; top: 6px; left: 16px; z-index: 6; display: block; }
+  .marca img { display: block; width: 315px; max-width: 46vw; height: auto; filter: drop-shadow(0 1px 8px #0009); }
   .ref { position: fixed; top: 24px; right: 24px; z-index: 6; font-size: 13px; color: var(--suave); }
   .estancia { position: fixed; left: 24px; bottom: 28px; z-index: 6; font: 400 clamp(36px, 5vw, 64px)/1 "Instrument Serif", serif; transition: opacity .4s; }
   .estancia small { display: block; font: 400 12px/1.4 Geist, sans-serif; letter-spacing: .08em; color: var(--suave); margin-bottom: 6px; }
@@ -66,7 +66,7 @@
 </div>
 <div class="avance"></div>
 <p class="carga">Cargando el recorrido…</p>
-<a class="marca" href="../"><img src="../recursos/logo.png" width="315" height="113" alt="SuVivienda"></a>
+<a class="marca" href="../"><img src="../recursos/logo-claro.png" width="315" height="113" alt="SuVivienda"></a>
 <span class="ref">Ref. SV-0012</span>
 <p class="aviso">Recorrido generado con IA a partir de fotos reales de la vivienda.</p>
 <p class="estancia"><small></small><span></span></p>
