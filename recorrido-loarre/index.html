@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa en Loarre · Recorrido · SuVivienda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root { --fondo: #16130f; --tinta: #f6f1e8; --suave: #d9d0c3; }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: var(--fondo); color: var(--tinta); font: 400 16px/1.5 Geist, system-ui, sans-serif; }
+  .escenario { position: fixed; inset: 0; overflow: hidden; background: var(--fondo); }
+  video { position: absolute; display: block; }
+  .escenario::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(#16130fcc, transparent 28%, transparent 62%, #16130fcc); }
+  svg.flechas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: visible; }
+  svg line { stroke: var(--tinta); stroke-width: 1.2; }
+  svg circle.punto { fill: var(--tinta); }
+  svg circle.halo { fill: none; stroke: var(--tinta); stroke-width: 1; animation: latido 2s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes latido { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+  .nota { position: absolute; z-index: 3; width: 230px; padding: 12px 14px; background: #16130fd9; backdrop-filter: blur(8px); border-left: 1px solid var(--tinta); font-size: 14px; line-height: 1.35; opacity: 0; transition: opacity .35s ease; }
+  .nota small { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); margin-bottom: 4px; }
+  .nota.visible { opacity: 1; }
+  .marca { position: fixed; top: 6px; left: 16px; z-index: 6; display: block; }
+  .marca img { display: block; width: 315px; max-width: 46vw; height: auto; filter: drop-shadow(0 1px 8px #0009); }
+  .ref { position: fixed; top: 24px; right: 24px; z-index: 6; font-size: 13px; color: var(--suave); }
+  .estancia { position: fixed; left: 24px; bottom: 28px; z-index: 6; font: 400 clamp(36px, 5vw, 64px)/1 "Instrument Serif", serif; transition: opacity .4s; }
+  .estancia small { display: block; font: 400 12px/1.4 Geist, sans-serif; letter-spacing: .08em; color: var(--suave); margin-bottom: 6px; }
+  .hoy { position: fixed; right: 24px; bottom: 28px; z-index: 6; display: flex; gap: 12px; align-items: end; opacity: 0; transition: opacity .4s; }
+  .hoy.visible { opacity: 1; }
+  .hoy img { width: 150px; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid #ffffff55; }
+  .hoy p { font-size: 12px; color: var(--suave); text-align: right; max-width: 16ch; }
+  .hoy p b { display: block; color: var(--tinta); font-weight: 500; }
+  .aviso { position: fixed; top: 58px; right: 24px; z-index: 6; font-size: 11px; color: var(--suave); max-width: 30ch; text-align: right; }
+  .avance { position: fixed; left: 0; top: 0; height: 2px; z-index: 7; background: var(--tinta); width: 0; }
+  .carga { position: fixed; inset: 0; z-index: 8; display: grid; place-items: center; background: var(--fondo); color: var(--suave); font-size: 14px; transition: opacity .6s; }
+  .listo .carga { opacity: 0; pointer-events: none; }
+  main { position: relative; z-index: 5; }
+  .intro { height: 100svh; display: grid; align-content: end; padding: 0 24px 16svh; max-width: 1200px; margin: 0 auto; }
+  .antetitulo { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--suave); }
+  h1 { font: 400 clamp(52px, 10vw, 136px)/.92 "Instrument Serif", serif; letter-spacing: -.02em; margin: 16px 0 24px; text-shadow: 0 2px 30px #0006; }
+  h1 em { color: var(--suave); }
+  .datos { display: flex; flex-wrap: wrap; gap: 6px 28px; color: var(--suave); }
+  .datos b { color: var(--tinta); font-weight: 500; }
+  .tramo { height: 2400svh; }
+  .cierre { height: 100svh; display: grid; align-content: center; padding: 0 24px; max-width: none; margin: 0; background: linear-gradient(90deg, #16130fd9 0%, #16130f99 45%, transparent 75%); }
+  @media (max-width: 640px) { .cierre { background: linear-gradient(transparent, #16130fcc 30%, #16130fcc 70%, transparent); } }
+  .cierre h2 { font: 400 clamp(40px, 6vw, 84px)/1 "Instrument Serif", serif; max-width: 14ch; text-shadow: 0 2px 30px #0008; }
+  .cierre p { color: var(--suave); margin: 20px 0 32px; max-width: 46ch; }
+  .boton { justify-self: start; padding: 16px 26px; background: var(--tinta); color: var(--fondo); border-radius: 999px; text-decoration: none; font-weight: 500; }
+  .ficha-enlace { justify-self: start; margin-top: 18px; }
+  .fuera .estancia, .fuera .hoy { opacity: 0; }
+  @media (max-width: 640px) {
+    .nota { width: 180px; font-size: 13px; }
+    .hoy img { width: 96px; }
+    .aviso { left: 24px; right: 24px; text-align: left; top: 84px; max-width: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { svg circle.halo { animation: none; } }
+</style>
+</head>
+<body class="fuera">
+<div class="escenario" aria-hidden="true">
+  <video muted playsinline preload="auto" poster="poster.jpg"></video>
+  <svg class="flechas"></svg>
+</div>
+<div class="avance"></div>
+<p class="carga">Cargando el recorrido…</p>
+<a class="marca" href="../"><img src="../recursos/logo-claro.png" width="315" height="113" alt="SuVivienda"></a>
+<span class="ref">Ref. SV-0014</span>
+<p class="aviso">Recorrido generado con IA a partir de fotos reales de la vivienda.</p>
+<p class="estancia"><small></small><span></span></p>
+<div class="hoy"><p><b>Así está hoy</b><span></span></p><img alt=""></div>
+
+<main>
+  <header class="intro">
+    <p class="antetitulo">Casa unifamiliar en venta · Loarre, Hoya de Huesca</p>
+    <h1>Una terraza enorme<br><em>mirando a la sierra.</em></h1>
+    <div class="datos"><span><b>110.000 €</b></span><span>140 m²</span><span>3 dormitorios</span><span>2 baños</span><span>Lista para entrar a vivir</span></div>
+  </header>
+  <div class="tramo"></div>
+  <section class="cierre">
+    <h2>Lo que falta se ve mejor en persona.</h2>
+    <p>Te enseñamos la casa cuando te venga bien, y subimos a la terraza. Oficina en Calle Fatás 6, Huesca.</p>
+    <a class="boton" href="tel:+34974353641">Llamar al 974 353 641</a>
+    <a class="ficha-enlace" href="https://suvivienda.digitaliate.es/inmueble/casa-en-venta-loarre-sv-0014">Ver la ficha de la casa</a>
+  </section>
+</main>
+
+<script>
+  // Tiempos (s) y posiciones (fracción del vídeo 16:9) medidos sobre recorrido.mp4 con una rejilla.
+  const VIDEO = { ancho: 1280, alto: 720, duracion: 68.9 };
+  const ESTANCIAS = [
+    { desde: 0, nombre: "Entrada" },
+    { desde: 6.4, nombre: "Salón" },
+    { desde: 13.7, nombre: "Cocina" },
+    { desde: 21, nombre: "Despensa" },
+    { desde: 26.4, nombre: "Lavadero" },
+    { desde: 30, nombre: "Habitación" },
+    { desde: 36.4, nombre: "Dormitorio" },
+    { desde: 42.8, nombre: "Dormitorio" },
+    { desde: 49.2, nombre: "Baño" },
+    { desde: 55.6, nombre: "Aseo" },
+    { desde: 61, nombre: "Terraza" },
+  ];
+  const NOTAS = [
+    { t: [0.5, 6.7], de: [0.5, 0.8], a: [0.55, 0.84], titulo: "La casa", texto: "140 m² construidos y 123 m² útiles" },
+    { t: [7.2, 13.5], de: [0.6, 0.62], a: [0.72, 0.62], titulo: "Salón", texto: "Con chimenea" },
+    { t: [14.5, 20.8], de: [0.4, 0.5], a: [0.3, 0.55], titulo: "Cocina", texto: "Completamente equipada" },
+    { t: [37.2, 42.8], de: [0.6, 0.6], a: [0.6, 0.62], titulo: "Dormitorio", texto: "Uno de los 3 de la casa" },
+    { t: [50.0, 55.6], de: [0.55, 0.42], a: [0.6, 0.42], titulo: "Baño", texto: "La casa tiene 2 baños" },
+    { t: [61.8, 68.3], de: [0.55, 0.2], a: [0.55, 0.2], titulo: "Terraza", texto: "Enorme, con vistas panorámicas" },
+  ];
+  const INICIO = 0.03, FIN = 0.96;
+
+  const escenario = document.querySelector(".escenario");
+  const video = escenario.querySelector("video");
+  const svg = escenario.querySelector("svg");
+  const avance = document.querySelector(".avance");
+  const rotulo = document.querySelector(".estancia");
+  const hoy = document.querySelector(".hoy");
+  const reducido = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const lerp = (a, b, k) => a + (b - a) * k;
+  const NS = "http://www.w3.org/2000/svg";
+
+  const notas = NOTAS.map((n) => {
+    const el = document.createElement("p");
+    el.className = "nota";
+    el.innerHTML = `<small>${n.titulo}</small>${n.texto}`;
+    escenario.append(el);
+    const g = document.createElementNS(NS, "g");
+    g.innerHTML = `<line/><circle class="halo" r="9"/><circle class="punto" r="4"/>`;
+    svg.append(g);
+    return { ...n, el, g };
+  });
+
+  let tiempo = 0, foco = [0.5, 0.5];
+
+  function pintar() {
+    const sc = scrollY / (document.documentElement.scrollHeight - innerHeight);
+    const p = Math.min(1, Math.max(0, (sc - INICIO) / (FIN - INICIO)));
+    const dur = video.duration || VIDEO.duracion;
+    tiempo = reducido ? p * dur : lerp(tiempo, p * dur, 0.14);
+    if (Math.abs(video.currentTime - tiempo) > 0.02 && !video.seeking) video.currentTime = Math.min(tiempo, dur - 0.05);
+    avance.style.width = `${sc * 100}%`;
+    document.body.classList.toggle("fuera", sc < INICIO * 0.6 || sc > FIN + 0.02);
+
+    const activas = notas.filter((n) => tiempo > n.t[0] && tiempo < n.t[1]);
+    // Cuando la pantalla no tiene la proporción del vídeo, el encuadre se desplaza hacia lo que señalan las flechas.
+    const centro = (eje) => activas.length ? activas.reduce((s, n) => s + lerp(n.de[eje], n.a[eje], (tiempo - n.t[0]) / (n.t[1] - n.t[0])), 0) / activas.length : 0.5;
+    foco = foco.map((f, eje) => lerp(f, centro(eje), 0.06));
+    const W = innerWidth, H = innerHeight, s = Math.max(W / VIDEO.ancho, H / VIDEO.alto), dw = VIDEO.ancho * s, dh = VIDEO.alto * s;
+    const x0 = Math.min(0, Math.max(W - dw, W / 2 - foco[0] * dw)), y0 = Math.min(0, Math.max(H - dh, H / 2 - foco[1] * dh));
+    Object.assign(video.style, { width: `${dw}px`, height: `${dh}px`, left: `${x0}px`, top: `${y0}px` });
+
+    notas.forEach((n) => {
+      const k = Math.min(1, Math.max(0, (tiempo - n.t[0]) / (n.t[1] - n.t[0])));
+      const x = x0 + lerp(n.de[0], n.a[0], k) * dw, y = y0 + lerp(n.de[1], n.a[1], k) * dh;
+      const on = activas.includes(n) && x > 8 && x < W - 8 && y > 70 && y < H - 120;
+      const izq = x > W / 2, ancho = n.el.offsetWidth, alto = n.el.offsetHeight;
+      const lx = Math.min(W - ancho - 16, Math.max(16, izq ? x - 90 - ancho : x + 90));
+      const ly = Math.min(H - alto - 130, Math.max(80, y - 110));
+      n.el.style.transform = `translate(${lx}px, ${ly}px)`;
+      n.el.classList.toggle("visible", on);
+      const [linea, halo, punto] = n.g.children;
+      Object.entries({ x1: x, y1: y, x2: izq ? lx + ancho : lx, y2: ly + alto / 2 }).forEach(([a, v]) => linea.setAttribute(a, v));
+      [halo, punto].forEach((c) => { c.setAttribute("cx", x); c.setAttribute("cy", y); });
+      n.g.style.opacity = on ? 1 : 0;
+    });
+
+    const e = ESTANCIAS.findLast((s) => tiempo >= s.desde);
+    rotulo.querySelector("small").textContent = `${ESTANCIAS.indexOf(e) + 1} / ${ESTANCIAS.length}`;
+    rotulo.querySelector("span").textContent = e.nombre;
+    hoy.classList.toggle("visible", !!e.hoy);
+    if (e.hoy && hoy.querySelector("img").getAttribute("src") !== e.hoy) {
+      hoy.querySelector("img").src = e.hoy;
+      hoy.querySelector("p span").textContent = e.texto;
+    }
+    requestAnimationFrame(pintar);
+  }
+
+  // El vídeo se descarga entero antes de empezar: buscar fotogramas sobre la red da tirones al hacer scroll.
+  fetch(innerWidth < 760 ? "recorrido-movil.mp4" : "recorrido.mp4").then((r) => r.blob()).then((b) => {
+    video.src = URL.createObjectURL(b);
+    video.addEventListener("loadeddata", () => { document.body.classList.add("listo"); requestAnimationFrame(pintar); }, { once: true });
+  });
+  svg.querySelectorAll("g").forEach((g) => (g.style.transition = "opacity .35s"));
+</script>
+</body>
+</html>
