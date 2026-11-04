@@ -1,5 +1,5 @@
 // Textos legales de la propuesta elegida (Selección). Parten de los de la plataforma (app/(web)/{aviso-legal,privacidad,cookies})
-// adaptados a lo que hace esta web: sin formularios, sin cookies y alojada en GitHub Pages.
+// adaptados a lo que hace esta web: independiente de la plataforma, sin formularios ni cookies y alojada en GitHub Pages.
 const EMPRESA = {
   razonSocial: "INMOHUESCA ASESORES INMOBILIARIOS, S.L.",
   nif: "B-22408165",
@@ -7,7 +7,6 @@ const EMPRESA = {
   telefono: "974 353 641",
   email: "info@suviviendahuesca.com",
 };
-const PLATAFORMA = "https://suvivienda.digitaliate.es";
 
 function pagina(titulo, cuerpo) {
   return `<!doctype html>
@@ -72,7 +71,7 @@ ${titular}
 <h2>Responsable del tratamiento</h2>
 <p>${EMPRESA.razonSocial}, NIF ${EMPRESA.nif}, ${EMPRESA.domicilio}. Email: <a href="mailto:${EMPRESA.email}">${EMPRESA.email}</a>. Teléfono: ${EMPRESA.telefono}.</p>
 <h2>Qué datos recogemos</h2>
-<p>Esta web no tiene formularios ni cuentas de usuario. Solo tratamos los datos que tú nos das al escribirnos por correo o al llamarnos: normalmente tu nombre, tu teléfono, tu email y lo que nos cuentes en el mensaje. Si nos pides una valoración, además la zona o la calle de tu vivienda.</p>
+<p>Esta web no tiene formularios ni cuentas de usuario. Solo tratamos los datos que tú nos das al escribirnos por correo o WhatsApp o al llamarnos: normalmente tu nombre, tu teléfono, tu email y lo que nos cuentes en el mensaje. Si nos pides una valoración, además la zona o la calle de tu vivienda.</p>
 <h2>Para qué los usamos</h2>
 <ul>
 <li>Responder a tu consulta y gestionar tu interés en un inmueble.</li>
@@ -88,14 +87,14 @@ ${titular}
 <p>Tus datos se alojan en servidores de proveedores tecnológicos que actúan como encargados del tratamiento. Solo se comunican a terceros (notarías, administraciones, entidades financieras) cuando es necesario para la operación que nos encargas o lo exige la ley.</p>
 <h2>Alojamiento de esta web</h2>
 <p>Esta web se sirve desde GitHub Pages (GitHub, Inc.), que, como cualquier servidor, recibe la dirección IP de quien la visita y la guarda durante un tiempo limitado por motivos de seguridad. GitHub puede tratar esos datos en Estados Unidos con las garantías previstas en el RGPD.</p>
-<p>El buscador y las fichas de los inmuebles te llevan a nuestra plataforma en <a href="${PLATAFORMA}">${PLATAFORMA.replace("https://", "")}</a>, que tiene su propia <a href="${PLATAFORMA}/privacidad">política de privacidad</a>.</p>
+<p>Si nos escribes por WhatsApp, el mensaje pasa por WhatsApp Ireland Ltd., que lo trata según su propia política de privacidad.</p>
 <h2>Tus derechos</h2>
 <p>Puedes ejercer los derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a <a href="mailto:${EMPRESA.email}">${EMPRESA.email}</a> o a nuestra dirección postal, adjuntando copia de un documento que acredite tu identidad. También puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es">www.aepd.es</a>).</p>`),
 
   cookies: pagina("Política de cookies", `<h2>Esta web no usa cookies</h2>
 <p>No instalamos cookies de ningún tipo: ni técnicas, ni de analítica, ni de publicidad. Tampoco guardamos nada en tu navegador ni te seguimos entre páginas. Por eso no te pedimos que aceptes nada al entrar.</p>
 <h2>Contenido de terceros</h2>
-<p>Las tipografías, las fotos y los vídeos se sirven desde esta misma web, sin conectar con servicios externos. Solo los enlaces a redes sociales y a nuestra plataforma te llevan a otros sitios, y únicamente cuando los pulsas. Esos sitios tienen sus propias políticas de cookies; la de nuestra plataforma está en <a href="${PLATAFORMA}/cookies">${PLATAFORMA.replace("https://", "")}/cookies</a>.</p>
+<p>Las tipografías, las fotos y los vídeos se sirven desde esta misma web, sin conectar con servicios externos. Solo los enlaces a redes sociales y a WhatsApp te llevan a otros sitios, y únicamente cuando los pulsas. Esos sitios tienen sus propias políticas de cookies.</p>
 <h2>Cómo gestionar las cookies</h2>
 <p>Aunque aquí no las usamos, puedes bloquear o eliminar las cookies de cualquier web desde la configuración de tu navegador.</p>
 <h2>Dudas</h2>

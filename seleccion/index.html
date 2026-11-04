@@ -108,13 +108,13 @@
 <body>
 <header class="marco barra">
   <a href="#"><img src="../recursos/logo.png" width="315" height="113" alt="SuVivienda"></a>
-  <nav aria-label="Principal"><a href="#cartera">Comprar</a><a href="https://suvivienda.digitaliate.es/alquilar">Alquilar</a><a href="#obra">Obra nueva</a><a href="#valorar">Vender</a><a href="#empresa">Quiénes somos</a><a href="#contacto">Contacto</a></nav>
+  <nav aria-label="Principal"><a href="#cartera">Comprar</a><a href="../buscar/?op=alquilar">Alquilar</a><a href="#obra">Obra nueva</a><a href="#valorar">Vender</a><a href="#empresa">Quiénes somos</a><a href="#contacto">Contacto</a></nav>
 </header>
 <div class="hero">
   <video muted loop playsinline autoplay preload="auto" poster="../recursos/fotos/lft.jpg" src="../recursos/lft.mp4" aria-hidden="true"></video>
   <div>
     <h1>Tu casa en Huesca</h1>
-    <form class="buscar" data-buscador method="get">
+    <form class="buscar" data-buscador method="get" action="../buscar/"><input type="hidden" name="op" value="comprar">
       <div class="ops"><button type="button" data-op="comprar">Comprar</button><button type="button" data-op="alquilar">Alquilar</button></div>
       <div class="campos">
         <label>Tipo<select name="tipo"><option value="">Todos</option><option value="piso">Piso</option><option value="casa">Casa</option><option value="duplex">Dúplex</option><option value="local">Local</option><option value="garaje">Garaje</option><option value="terreno">Terreno</option></select></label>
@@ -128,9 +128,9 @@
 <section class="marco">
   <div class="centro revela"><h2>Dónde buscar</h2><p class="sub">Huesca capital y los pueblos de la provincia, con una oficina que conoce cada zona.</p></div>
   <div class="zonas revela">
-    <a class="zona" href="https://suvivienda.digitaliate.es/comprar?localidad=Huesca"><img loading="lazy" src="../recursos/fotos/huesca-vista.jpg" alt="Huesca desde una séptima planta"><span>Huesca capital</span></a>
-    <a class="zona" href="https://suvivienda.digitaliate.es/comprar?localidad=Loarre"><img loading="lazy" src="../recursos/fotos/SV-0014.jpg" alt="Loarre"><span>Loarre</span></a>
-    <a class="zona" href="https://suvivienda.digitaliate.es/comprar?localidad=Ayerbe"><img loading="lazy" src="../recursos/fotos/SV-0027.jpg" alt="Ayerbe"><span>Ayerbe</span></a>
+    <a class="zona" href="../buscar/?op=comprar&amp;localidad=Huesca"><img loading="lazy" src="../recursos/fotos/huesca-vista.jpg" alt="Huesca desde una séptima planta"><span>Huesca capital</span></a>
+    <a class="zona" href="../buscar/?op=comprar&amp;localidad=Loarre"><img loading="lazy" src="../recursos/fotos/SV-0014.jpg" alt="Loarre"><span>Loarre</span></a>
+    <a class="zona" href="../buscar/?op=comprar&amp;localidad=Ayerbe"><img loading="lazy" src="../recursos/fotos/SV-0027.jpg" alt="Ayerbe"><span>Ayerbe</span></a>
   </div>
 </section>
 <section class="obra" id="obra"><div class="marco">
@@ -139,13 +139,13 @@
     <h2>Obra nueva: LFT Huesca</h2>
     <p class="sub">Cinco lofts en el centro, diseñados por SOHOO Arquitectos. Imágenes del proyecto: el acabado final puede variar.</p>
     <dl><div><dt>Desde</dt><dd>372.500 €</dd></div><div><dt>Superficie</dt><dd>139 m²</dd></div><div><dt>Habitaciones</dt><dd>3</dd></div><div><dt>Calle</dt><dd>León Abadías</dd></div></dl>
-    <a class="boton" href="https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0015">Ver la promoción</a>
+    <a class="boton" href="../inmueble/sv-0015/">Ver la promoción</a>
   </div>
 </div></section>
 <section class="marco" id="cartera">
   <div class="centro revela"><h2>Inmuebles destacados</h2></div>
   <div class="tarjetas"></div>
-  <a class="mas" href="https://suvivienda.digitaliate.es/comprar">Ver todos los inmuebles</a>
+  <a class="mas" href="../buscar/?op=comprar">Ver todos los inmuebles</a>
 </section>
 <div class="valora" id="valorar"><div class="marco">
   <div><h2>¿Cuánto vale tu casa?</h2><p>La valoración y la visita son gratuitas. Te llamamos en menos de 24 horas.</p></div>
@@ -185,17 +185,17 @@
 </div></section>
 <footer><div class="marco"><span>INMOHUESCA ASESORES INMOBILIARIOS, S.L. NIF B-22408165</span><span><a href="https://www.facebook.com/suviviendahuesca">Facebook</a> y <a href="https://www.instagram.com/suviviendahuesca">Instagram</a></span><span><a href="../aviso-legal/">Aviso legal</a> · <a href="../privacidad/">Privacidad</a> · <a href="../cookies/">Cookies</a></span></div></footer>
 <script>
-  const INMUEBLES = [{"ref":"SV-0012","t":"Piso de 4 habitaciones junto al Hospital San Jorge","p":360000,"alq":false,"m":177,"h":4,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0012","foto":true},{"ref":"SV-0013","t":"Casa independiente con jardín en Siétamo","p":355000,"alq":false,"m":226,"h":3,"loc":"Siétamo","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-sietamo-sv-0013","foto":false},{"ref":"SV-0014","t":"Casa unifamiliar en Loarre, lista para entrar a vivir","p":110000,"alq":false,"m":140,"h":3,"loc":"Loarre","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-loarre-sv-0014","foto":true},{"ref":"SV-0015","t":"Dúplex de obra nueva con terraza en Los Olivos","p":372500,"alq":false,"m":139,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"https://suvivienda.digitaliate.es/inmueble/duplex-en-venta-huesca-sv-0015","foto":true},{"ref":"SV-0016","t":"Dúplex de obra nueva con terraza en Los Olivos","p":375500,"alq":false,"m":138,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"https://suvivienda.digitaliate.es/inmueble/duplex-en-venta-huesca-sv-0016","foto":true},{"ref":"SV-0017","t":"Chalet independiente con piscina en Vicién","p":649000,"alq":false,"m":243,"h":3,"loc":"Vicién","tipo":"Casa","url":"https://suvivienda.digitaliate.es/inmueble/casa-en-venta-vicien-sv-0017","foto":false},{"ref":"SV-0018","t":"Piso reformado con tres terrazas en Los Olivos","p":350000,"alq":false,"m":120,"h":2,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0018","foto":false},{"ref":"SV-0019","t":"Piso para reformar en el centro, calle Cabestany","p":189000,"alq":false,"m":65,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0019","foto":true},{"ref":"SV-0020","t":"Piso con garaje en el centro, zona Sto. Domingo","p":180000,"alq":false,"m":64,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-venta-huesca-sv-0020","foto":true},{"ref":"SV-0021","t":"Piso reformado de 3 habitaciones en el centro","p":1150,"alq":true,"m":110,"h":3,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-alquiler-huesca-sv-0021","foto":false},{"ref":"SV-0022","t":"Piso de 4 habitaciones a estrenar en el centro","p":1200,"alq":true,"m":140,"h":4,"loc":"Huesca","tipo":"Piso","url":"https://suvivienda.digitaliate.es/inmueble/piso-en-alquiler-huesca-sv-0022","foto":false},{"ref":"SV-0023","t":"Local reformado a pie de calle en el Casco Antiguo","p":95000,"alq":false,"m":53,"h":null,"loc":"Huesca","tipo":"Local","url":"https://suvivienda.digitaliate.es/inmueble/local-en-venta-huesca-sv-0023","foto":true},{"ref":"SV-0024","t":"Local diáfano a pie de calle en Calle Fatás","p":1900,"alq":true,"m":125,"h":null,"loc":"Huesca","tipo":"Local","url":"https://suvivienda.digitaliate.es/inmueble/local-en-alquiler-huesca-sv-0024","foto":false},{"ref":"SV-0025","t":"Plaza de garaje en venta en Los Olivos","p":9000,"alq":false,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"https://suvivienda.digitaliate.es/inmueble/garaje-en-venta-huesca-sv-0025","foto":false},{"ref":"SV-0026","t":"Plaza de garaje en alquiler en Los Olivos","p":65,"alq":true,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"https://suvivienda.digitaliate.es/inmueble/garaje-en-alquiler-huesca-sv-0026","foto":false},{"ref":"SV-0027","t":"Solar urbano de 514 m² en Ayerbe con proyecto","p":59000,"alq":false,"m":514,"h":null,"loc":"Ayerbe","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-ayerbe-sv-0027","foto":true},{"ref":"SV-0028","t":"Finca de 1.830 m² con vivienda y huerto","p":65000,"alq":false,"m":1830,"h":null,"loc":"Alcalá de Gurrea","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-alcala-de-gurrea-sv-0028","foto":false},{"ref":"SV-0029","t":"Terreno de regadío con nave a 2 km de Huesca","p":70000,"alq":false,"m":560,"h":null,"loc":"Huesca","tipo":"Terreno","url":"https://suvivienda.digitaliate.es/inmueble/terreno-en-venta-huesca-sv-0029","foto":false},{"ref":"SV-0030","t":"Edificio hotelero de 33 habitaciones en Huesca","p":1600000,"alq":false,"m":2000,"h":null,"loc":"Huesca","tipo":"Edificio","url":"https://suvivienda.digitaliate.es/inmueble/edificio-en-venta-huesca-sv-0030","foto":false}];
-  const PLATAFORMA = "https://suvivienda.digitaliate.es";
+  const INMUEBLES = [{"ref":"SV-0012","t":"Piso de 4 habitaciones junto al Hospital San Jorge","p":360000,"alq":false,"m":177,"h":4,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0012/","foto":true},{"ref":"SV-0013","t":"Casa independiente con jardín en Siétamo","p":355000,"alq":false,"m":226,"h":3,"loc":"Siétamo","tipo":"Casa","url":"../inmueble/sv-0013/","foto":false},{"ref":"SV-0014","t":"Casa unifamiliar en Loarre, lista para entrar a vivir","p":110000,"alq":false,"m":140,"h":3,"loc":"Loarre","tipo":"Casa","url":"../inmueble/sv-0014/","foto":true},{"ref":"SV-0015","t":"Dúplex de obra nueva con terraza en Los Olivos","p":372500,"alq":false,"m":139,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"../inmueble/sv-0015/","foto":true},{"ref":"SV-0016","t":"Dúplex de obra nueva con terraza en Los Olivos","p":375500,"alq":false,"m":138,"h":3,"loc":"Huesca","tipo":"Dúplex","url":"../inmueble/sv-0016/","foto":true},{"ref":"SV-0017","t":"Chalet independiente con piscina en Vicién","p":649000,"alq":false,"m":243,"h":3,"loc":"Vicién","tipo":"Casa","url":"../inmueble/sv-0017/","foto":false},{"ref":"SV-0018","t":"Piso reformado con tres terrazas en Los Olivos","p":350000,"alq":false,"m":120,"h":2,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0018/","foto":false},{"ref":"SV-0019","t":"Piso para reformar en el centro, calle Cabestany","p":189000,"alq":false,"m":65,"h":3,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0019/","foto":true},{"ref":"SV-0020","t":"Piso con garaje en el centro, zona Sto. Domingo","p":180000,"alq":false,"m":64,"h":3,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0020/","foto":true},{"ref":"SV-0021","t":"Piso reformado de 3 habitaciones en el centro","p":1150,"alq":true,"m":110,"h":3,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0021/","foto":false},{"ref":"SV-0022","t":"Piso de 4 habitaciones a estrenar en el centro","p":1200,"alq":true,"m":140,"h":4,"loc":"Huesca","tipo":"Piso","url":"../inmueble/sv-0022/","foto":false},{"ref":"SV-0023","t":"Local reformado a pie de calle en el Casco Antiguo","p":95000,"alq":false,"m":53,"h":null,"loc":"Huesca","tipo":"Local","url":"../inmueble/sv-0023/","foto":true},{"ref":"SV-0024","t":"Local diáfano a pie de calle en Calle Fatás","p":1900,"alq":true,"m":125,"h":null,"loc":"Huesca","tipo":"Local","url":"../inmueble/sv-0024/","foto":false},{"ref":"SV-0025","t":"Plaza de garaje en venta en Los Olivos","p":9000,"alq":false,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"../inmueble/sv-0025/","foto":false},{"ref":"SV-0026","t":"Plaza de garaje en alquiler en Los Olivos","p":65,"alq":true,"m":null,"h":null,"loc":"Huesca","tipo":"Garaje","url":"../inmueble/sv-0026/","foto":false},{"ref":"SV-0027","t":"Solar urbano de 514 m² en Ayerbe con proyecto","p":59000,"alq":false,"m":514,"h":null,"loc":"Ayerbe","tipo":"Terreno","url":"../inmueble/sv-0027/","foto":true},{"ref":"SV-0028","t":"Finca de 1.830 m² con vivienda y huerto","p":65000,"alq":false,"m":1830,"h":null,"loc":"Alcalá de Gurrea","tipo":"Terreno","url":"../inmueble/sv-0028/","foto":false},{"ref":"SV-0029","t":"Terreno de regadío con nave a 2 km de Huesca","p":70000,"alq":false,"m":560,"h":null,"loc":"Huesca","tipo":"Terreno","url":"../inmueble/sv-0029/","foto":false},{"ref":"SV-0030","t":"Edificio hotelero de 33 habitaciones en Huesca","p":1600000,"alq":false,"m":2000,"h":null,"loc":"Huesca","tipo":"Edificio","url":"../inmueble/sv-0030/","foto":false}];
+  // Web independiente: sin enlaces a la plataforma.
   const euros = (n) => new Intl.NumberFormat("de-DE").format(n) + " €";
   const destacados = INMUEBLES.filter((i) => i.foto && i.ref !== "SV-0016");
   const detalles = (i) => [i.m && `${new Intl.NumberFormat("de-DE").format(i.m)} m²`, i.h && `${i.h} hab.`, i.loc].filter(Boolean).join(", ");
-  // El buscador envía a la cartera real de la plataforma; los campos vacíos no se mandan para no ensuciar la URL.
+  // El buscador lleva a la búsqueda propia de la web; los campos vacíos no se mandan para no ensuciar la URL.
   document.querySelectorAll("form[data-buscador]").forEach((f) => {
     const zona = f.querySelector('[name="localidad"]');
     [...new Set(INMUEBLES.map((i) => i.loc))].forEach((l) => zona.add(new Option(l, l)));
     const operar = (op) => {
-      f.action = `${PLATAFORMA}/${op}`;
+      f.elements.op.value = op;
       f.querySelectorAll("[data-op]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.op === op));
     };
     f.querySelectorAll("[data-op]").forEach((b) => b.addEventListener("click", () => operar(b.dataset.op)));
@@ -210,7 +210,7 @@
   document.querySelectorAll(".revela").forEach((el) => obsRevela.observe(el));
   // Las fichas con recorrido completo llevan a él; se aplica al final porque cada propuesta pinta sus tarjetas después.
   const RECORRIDOS = { "sv-0012": ["../recorrido-ferrer/", "Recorrer la casa"], "sv-0014": ["../recorrido-loarre/", "Recorrer la casa"], "sv-0020": ["../recorrido-tenerias/", "Recorrer el piso"], "sv-0019": ["../recorrido-cabestany/", "Ver la reforma"], "sv-0023": ["../recorrido-local/", "Recorrer el local"], "sv-0015": ["../recorrido-lft/", "Recorrer el loft"], "sv-0016": ["../recorrido-lft/", "Recorrer el loft"] };
-  document.addEventListener("DOMContentLoaded", () => Object.entries(RECORRIDOS).forEach(([ref, [url, texto]]) => document.querySelectorAll(`a[href$="${ref}"]`).forEach((a) => {
+  document.addEventListener("DOMContentLoaded", () => Object.entries(RECORRIDOS).forEach(([ref, [url, texto]]) => document.querySelectorAll(`a[href*="/${ref}/"]`).forEach((a) => {
     a.href = url;
     if (a.classList.contains("ver") || a.classList.contains("boton")) { a.textContent = texto; return; }
     const m = document.createElement("span");

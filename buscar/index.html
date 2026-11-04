@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Buscar inmuebles en Huesca | SuVivienda</title>
+<meta name="description" content="Pisos, casas, locales, garajes y terrenos en venta y alquiler en Huesca y provincia.">
+<link rel="stylesheet" href="../recursos/fuentes/fuentes.css">
+<style>
+  :root { --tinta: #1c1c1e; --gris: #5f5f64; --linea: #e2e2e4; --suave: #f5f5f4; --rojo: #b81f30; --serif: "Source Serif 4", Georgia, serif; }
+  * { box-sizing: border-box; margin: 0; }
+  html { background: #fff; color: var(--tinta); font: 400 16px/1.55 "Instrument Sans", system-ui, sans-serif; }
+  a { color: inherit; } button, select { font: inherit; color: inherit; }
+  .marco { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-block: 6px; border-bottom: 1px solid var(--linea); }
+  .barra img { display: block; width: 260px; max-width: 58vw; height: auto; }
+  .barra a.tel { font-weight: 600; text-decoration: none; white-space: nowrap; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.4vw, 54px); line-height: 1.1; letter-spacing: -.012em; }
+  h2 { font-family: var(--serif); font-weight: 500; font-size: 24px; margin: 36px 0 12px; }
+  .volver { display: inline-block; margin: 26px 0 18px; font-size: 14px; font-weight: 500; color: var(--gris); }
+  .boton { display: inline-block; background: var(--rojo); color: #fff; border: 0; padding: 12px 26px; font-weight: 600; text-decoration: none; cursor: pointer; text-align: center; transition: background .2s; }
+  .boton:hover { background: #971725; }
+  .linea { display: block; border: 1px solid var(--tinta); padding: 11px 20px; font-weight: 600; text-decoration: none; text-align: center; transition: background .2s, color .2s; }
+  .linea:hover { background: var(--tinta); color: #fff; }
+  .sinfoto { display: grid; place-items: center; height: 100%; padding: 16px; text-align: center; color: var(--gris); font-size: 14px; background: var(--suave); }
+  .sinfoto b { display: block; font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--tinta); }
+  footer { border-top: 1px solid var(--linea); margin-top: 72px; font-size: 14px; color: var(--gris); }
+  footer .marco { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 28px; padding-block: 26px; }
+  @media (max-width: 760px) { .marco { padding: 0 18px; } }
+  .cabeza { padding-block: 40px 8px; }
+  .cabeza p { color: var(--gris); margin-top: 6px; }
+  form { display: grid; grid-template-columns: auto repeat(3, 1fr) auto; gap: 10px; align-items: end; padding: 18px 0 28px; border-bottom: 1px solid var(--linea); }
+  .ops { display: flex; gap: 18px; align-self: center; }
+  .ops label { cursor: pointer; font-weight: 600; color: var(--gris); border-bottom: 2px solid transparent; padding: 2px 0; }
+  .ops input { position: absolute; opacity: 0; }
+  .ops label:has(input:checked) { color: var(--tinta); border-color: var(--rojo); }
+  .ops label:has(input:focus-visible) { outline: 2px solid var(--rojo); outline-offset: 3px; }
+  form > label { display: grid; gap: 4px; font-size: 13px; font-weight: 500; }
+  select { padding: 11px 10px; border: 1px solid #c9c9cd; background: #fff; width: 100%; }
+  .tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px 20px; margin-top: 32px; }
+  .tarjeta { text-decoration: none; display: block; }
+  .tarjeta figure { aspect-ratio: 4 / 3; overflow: hidden; background: var(--suave); }
+  .tarjeta img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .9s cubic-bezier(.16,1,.3,1); }
+  .tarjeta:hover img { transform: scale(1.04); }
+  .tarjeta b { display: block; font-family: var(--serif); font-weight: 500; font-size: 26px; margin-top: 12px; }
+  .tarjeta h3 { font-weight: 500; font-size: 16px; line-height: 1.35; margin-top: 2px; }
+  .tarjeta p { color: var(--gris); font-size: 14px; margin-top: 2px; }
+  .tarjeta .rec { display: block; margin-top: 6px; font-weight: 600; font-size: 14px; color: var(--rojo); }
+  .vacio { margin-top: 40px; padding: 40px; text-align: center; border: 1px dashed #c9c9cd; }
+  .vacio p { color: var(--gris); margin: 6px 0 18px; }
+  @media (max-width: 900px) { form { grid-template-columns: 1fr 1fr; } .ops { grid-column: 1 / -1; } .tarjetas { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .tarjetas { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="marco barra"><a href="../seleccion/"><img src="../recursos/logo.png" width="315" height="113" alt="SuVivienda, volver a la portada"></a><a class="tel" href="tel:+34974353641">974 353 641</a></header>
+<main class="marco">
+<div class="cabeza"><h1 data-titulo>Inmuebles en venta</h1><p data-cuenta></p></div>
+<form method="get">
+<div class="ops" role="radiogroup" aria-label="Operación"><label><input type="radio" name="op" value="comprar" checked>Comprar</label><label><input type="radio" name="op" value="alquilar">Alquilar</label></div>
+<label>Tipo<select name="tipo"><option value="">Todos</option><option value="piso">Piso</option><option value="casa">Casa</option><option value="duplex">Dúplex</option><option value="local">Local</option><option value="garaje">Garaje</option><option value="terreno">Terreno</option><option value="edificio">Edificio</option></select></label>
+<label>Zona<select name="localidad"><option value="">Toda la provincia</option><option>Alcalá de Gurrea</option><option>Ayerbe</option><option>Huesca</option><option>Loarre</option><option>Siétamo</option><option>Vicién</option></select></label>
+<label>Precio máximo<select name="precio_max"><option value="">Sin límite</option></select></label>
+<button class="boton">Buscar</button>
+</form>
+<div class="tarjetas" data-resultados></div>
+</main>
+<footer><div class="marco"><span>INMOHUESCA ASESORES INMOBILIARIOS, S.L. <span style="white-space:nowrap">NIF B-22408165</span></span><span><a href="../aviso-legal/">Aviso legal</a> · <a href="../privacidad/">Privacidad</a> · <a href="../cookies/">Cookies</a></span></div></footer>
+<script>
+  const INMUEBLES = [{"ref":"SV-0012","slug":"sv-0012","t":"Piso de 4 habitaciones junto al Hospital San Jorge","p":360000,"alq":false,"tipo":"piso","loc":"Huesca","hab":4,"d":"177 m², 4 hab., Huesca","foto":true},{"ref":"SV-0013","slug":"sv-0013","t":"Casa independiente con jardín en Siétamo","p":355000,"alq":false,"tipo":"casa","loc":"Siétamo","hab":3,"d":"226 m², 3 hab., Siétamo","foto":false},{"ref":"SV-0014","slug":"sv-0014","t":"Casa unifamiliar en Loarre, lista para entrar a vivir","p":110000,"alq":false,"tipo":"casa","loc":"Loarre","hab":3,"d":"140 m², 3 hab., Loarre","foto":true},{"ref":"SV-0015","slug":"sv-0015","t":"Dúplex de obra nueva con terraza en Los Olivos","p":372500,"alq":false,"tipo":"duplex","loc":"Huesca","hab":3,"d":"139 m², 3 hab., Huesca","foto":true},{"ref":"SV-0016","slug":"sv-0016","t":"Dúplex de obra nueva con terraza en Los Olivos","p":375500,"alq":false,"tipo":"duplex","loc":"Huesca","hab":3,"d":"138 m², 3 hab., Huesca","foto":true},{"ref":"SV-0017","slug":"sv-0017","t":"Chalet independiente con piscina en Vicién","p":649000,"alq":false,"tipo":"casa","loc":"Vicién","hab":3,"d":"243 m², 3 hab., Vicién","foto":false},{"ref":"SV-0018","slug":"sv-0018","t":"Piso reformado con tres terrazas en Los Olivos","p":350000,"alq":false,"tipo":"piso","loc":"Huesca","hab":2,"d":"120 m², 2 hab., Huesca","foto":false},{"ref":"SV-0019","slug":"sv-0019","t":"Piso para reformar en el centro, calle Cabestany","p":189000,"alq":false,"tipo":"piso","loc":"Huesca","hab":3,"d":"65 m², 3 hab., Huesca","foto":true},{"ref":"SV-0020","slug":"sv-0020","t":"Piso con garaje en el centro, zona Sto. Domingo","p":180000,"alq":false,"tipo":"piso","loc":"Huesca","hab":3,"d":"64 m², 3 hab., Huesca","foto":true},{"ref":"SV-0021","slug":"sv-0021","t":"Piso reformado de 3 habitaciones en el centro","p":1150,"alq":true,"tipo":"piso","loc":"Huesca","hab":3,"d":"110 m², 3 hab., Huesca","foto":false},{"ref":"SV-0022","slug":"sv-0022","t":"Piso de 4 habitaciones a estrenar en el centro","p":1200,"alq":true,"tipo":"piso","loc":"Huesca","hab":4,"d":"140 m², 4 hab., Huesca","foto":false},{"ref":"SV-0023","slug":"sv-0023","t":"Local reformado a pie de calle en el Casco Antiguo","p":95000,"alq":false,"tipo":"local","loc":"Huesca","hab":null,"d":"53 m², Huesca","foto":true},{"ref":"SV-0024","slug":"sv-0024","t":"Local diáfano a pie de calle en Calle Fatás","p":1900,"alq":true,"tipo":"local","loc":"Huesca","hab":null,"d":"125 m², Huesca","foto":false},{"ref":"SV-0025","slug":"sv-0025","t":"Plaza de garaje en venta en Los Olivos","p":9000,"alq":false,"tipo":"garaje","loc":"Huesca","hab":null,"d":"Huesca","foto":false},{"ref":"SV-0026","slug":"sv-0026","t":"Plaza de garaje en alquiler en Los Olivos","p":65,"alq":true,"tipo":"garaje","loc":"Huesca","hab":null,"d":"Huesca","foto":false},{"ref":"SV-0027","slug":"sv-0027","t":"Solar urbano de 514 m² en Ayerbe con proyecto","p":59000,"alq":false,"tipo":"terreno","loc":"Ayerbe","hab":null,"d":"514 m², Ayerbe","foto":true},{"ref":"SV-0028","slug":"sv-0028","t":"Finca de 1.830 m² con vivienda y huerto","p":65000,"alq":false,"tipo":"terreno","loc":"Alcalá de Gurrea","hab":null,"d":"1.830 m², Alcalá de Gurrea","foto":false},{"ref":"SV-0029","slug":"sv-0029","t":"Terreno de regadío con nave a 2 km de Huesca","p":70000,"alq":false,"tipo":"terreno","loc":"Huesca","hab":null,"d":"560 m², Huesca","foto":false},{"ref":"SV-0030","slug":"sv-0030","t":"Edificio hotelero de 33 habitaciones en Huesca","p":1600000,"alq":false,"tipo":"edificio","loc":"Huesca","hab":null,"d":"2.000 m², Huesca","foto":false}];
+  const RECORRIDOS = {"sv-0012":"Recorrer la casa","sv-0014":"Recorrer la casa","sv-0015":"Recorrer el loft","sv-0016":"Recorrer el loft","sv-0019":"Ver la reforma","sv-0020":"Recorrer el piso","sv-0023":"Recorrer el local"};
+  const TOPES = { comprar: [100000, 200000, 400000, 700000], alquilar: [500, 800, 1200, 2000] };
+  const form = document.querySelector("form");
+  const q = new URLSearchParams(location.search);
+  const op = q.get("op") === "alquilar" ? "alquilar" : "comprar";
+  const miles = (n) => new Intl.NumberFormat("de-DE").format(n);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  function topes(o) {
+    const sel = form.precio_max, actual = sel.value;
+    sel.length = 1;
+    TOPES[o].forEach((t) => sel.add(new Option(miles(t) + (o === "alquilar" ? " €/mes" : " €"), t)));
+    sel.value = actual;
+  }
+  form.querySelector('[value="' + op + '"]').checked = true;
+  topes(op);
+  ["tipo", "localidad", "precio_max"].forEach((c) => { if (q.get(c)) form[c].value = q.get(c); });
+  form.querySelectorAll('[name="op"]').forEach((r) => r.addEventListener("change", () => { form.precio_max.value = ""; topes(r.value); }));
+  // Los campos vacíos no se mandan para que la dirección quede limpia y se pueda compartir.
+  form.addEventListener("submit", () => {
+    form.querySelectorAll("select").forEach((c) => { if (!c.value) c.disabled = true; });
+    setTimeout(() => form.querySelectorAll("[disabled]").forEach((c) => (c.disabled = false)));
+  });
+
+  const tope = Number(form.precio_max.value) || Infinity;
+  const encontrados = INMUEBLES.filter((i) => i.alq === (op === "alquilar")
+    && (!form.tipo.value || i.tipo === form.tipo.value)
+    && (!form.localidad.value || i.loc === form.localidad.value)
+    && i.p <= tope);
+  document.querySelector("[data-titulo]").textContent = op === "alquilar" ? "Inmuebles en alquiler" : "Inmuebles en venta";
+  document.title = document.querySelector("[data-titulo]").textContent + " | SuVivienda";
+  document.querySelector("[data-cuenta]").textContent = encontrados.length === 1 ? "1 inmueble" : encontrados.length + " inmuebles";
+  const caja = document.querySelector("[data-resultados]");
+  if (!encontrados.length) {
+    caja.outerHTML = '<div class="vacio"><b>No tenemos nada con esos filtros ahora mismo</b><p>Cuéntanos qué buscas y te avisamos cuando entre algo parecido.</p><a class="boton" href="tel:+34974353641">Llamar al 974 353 641</a></div>';
+  } else {
+    caja.innerHTML = encontrados.map((i) => '<a class="tarjeta" href="../inmueble/' + i.slug + '/"><figure>'
+      + (i.foto ? '<img loading="lazy" src="../recursos/fotos/' + i.ref + '.jpg" alt="">' : '<div class="sinfoto"><p><b>Ref. ' + i.ref + '</b>Fotos bajo petición</p></div>')
+      + '</figure><b>' + miles(i.p) + (i.alq ? " €/mes" : " €") + '</b><h3>' + esc(i.t) + '</h3><p>' + esc(i.d) + '</p>'
+      + (RECORRIDOS[i.slug] ? '<span class="rec">' + esc(RECORRIDOS[i.slug]) + '</span>' : "") + '</a>').join("");
+  }
+</script>
+</body>
+</html>
