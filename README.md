@@ -2,6 +2,8 @@
 
 Enlace: https://digitaliate.github.io/suvivienda-web/
 
+**Estado: el cliente ha elegido Selección** (4-nov-2026). Las otras tres se quedan como estaban.
+
 | Propuesta | Idea | Referencia real | A quién capta |
 |---|---|---|---|
 | Selección | Buscador sobre vídeo, zonas, obra nueva y destacados | aProperties, Lucas Fox | Comprador que compara agencias |
